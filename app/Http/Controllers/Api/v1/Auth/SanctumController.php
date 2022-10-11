@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class SanctumController extends Controller
 {
-    //
+    public function register()
+    {
+
+    }
 }
