@@ -26,5 +26,5 @@ Route::group([
     // Sanctum routes
     Route::post('register', [\App\Http\Controllers\Api\v1\Auth\SanctumController::class, 'register'])->name('auth.register');
     Route::post('login', [\App\Http\Controllers\Api\v1\Auth\SanctumController::class, 'login'])->name('auth.login');
-
+    Route::post('logout', [\App\Http\Controllers\Api\v1\Auth\SanctumController::class, 'logout'])->name('auth.logout');
 });
