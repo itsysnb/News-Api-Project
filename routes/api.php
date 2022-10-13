@@ -39,6 +39,7 @@ Route::group([
     Route::group([
         'middleware' => 'admin',
         ], function (){
-
+        // category routes
+        Route::get('categories', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'index'])->name('category.index');
     });
 });
