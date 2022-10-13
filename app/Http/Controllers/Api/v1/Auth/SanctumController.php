@@ -21,5 +21,11 @@ class SanctumController extends ApiController
     public function login(LoginRequest $request)
     {
         $user = User::where('email', $request->email)->first();
+        $checkpwd = checkPassword($request->password, $user->password);
+        $token = $user->createToken('ysncode')->plainTextToken;
+        return $this->successResponse([
+            "user" => UserResource::make($user),
+            "token" => $token,
+        ]);
     }
 }
