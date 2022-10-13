@@ -32,6 +32,6 @@ class SanctumController extends ApiController
     public function logout(LoginRequest $request)
     {
         $request->user()->tokens()->delete();
-        return $this->successResponse('You are logout.', Response::HTTP_NO_CONTENT);
+        return $this->successResponse('You are logout.');
     }
 }
