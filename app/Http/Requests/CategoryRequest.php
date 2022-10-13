@@ -33,7 +33,8 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
-            'description' => ['required']
+            'description' => ['required'],
+            'parent_id' => ['sometimes', 'nullable', 'exists:categories,id']
         ];
     }
 
@@ -42,6 +43,7 @@ class CategoryRequest extends FormRequest
         return [
             'name' => ['sometimes', 'required', 'string', 'max:255', 'unique:categories,name'],
             'description' => ['sometimes', 'required'],
+            'parent_id' => ['sometimes', 'nullable', 'exists:categories,id']
         ];
     }
 }
