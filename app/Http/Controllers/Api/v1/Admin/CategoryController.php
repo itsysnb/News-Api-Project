@@ -13,7 +13,7 @@ class CategoryController extends ApiController
 {
     public function index()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::all();
         return $this->successResponse(CategoryResource::collection($categories));
     }
 
