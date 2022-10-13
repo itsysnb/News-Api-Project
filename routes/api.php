@@ -35,4 +35,10 @@ Route::group([
     'as' => 'v1.'
 ],function (){
     Route::post('logout', [\App\Http\Controllers\Api\v1\Auth\SanctumController::class, 'logout'])->name('auth.logout');
+    // admin routes
+    Route::group([
+        'middleware' => 'admin',
+        ], function (){
+
+    });
 });
