@@ -41,5 +41,9 @@ Route::group([
         ], function (){
         // category routes
         Route::get('categories', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'index'])->name('category.index');
+        Route::post('categories', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'store'])->name('categories.store');
+        Route::get('categories/{category}', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'show'])->name('categories.show');
+        Route::patch('categories/{category}', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('categories/{category}', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'destroy'])->name('categories.destroy');
     });
 });
