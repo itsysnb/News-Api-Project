@@ -13,7 +13,15 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    public function rules()
+    {
+        if ($this->getMethod() == 'POST')
+            return $this->createRules();
+        if ($this->getMethod() == 'PUT' || $this->getMethod() == 'PATCH')
+            return $this->updateRules();
     }
 
     /**
@@ -21,10 +29,19 @@ class CategoryRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function createRules()
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
+            'description' => ['required']
+        ];
+    }
+
+    public function updateRules()
+    {
+        return [
+            'name' => ['sometimes', 'required', 'string', 'max:255', 'unique:categories,name'],
+            'description' => ['sometimes', 'required'],
         ];
     }
 }
