@@ -13,7 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,29 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->getMethod() == 'POST')
+            return $this->createRules();
+        if ($this->getMethod() == 'PUT' || $this->getMethod() == "PATCH")
+            return $this->updateRules();
+    }
+
+    public function createRules(): array
+    {
         return [
-            //
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required'],
+            'user_id' => ['required', 'exists:users,id'],
+            'category' => ['required', 'exists:categories,id']
+        ];
+    }
+
+    public function updateRules(): array
+    {
+        return [
+            'title' => ['sometimes', 'required', 'string', 'max:255'],
+            'description' => ['sometimes', 'required'],
+            'user_id' => ['sometimes', 'required', 'exists:users,id'],
+            'category' => ['sometimes', 'required', 'exists:categories,id']
         ];
     }
 }
