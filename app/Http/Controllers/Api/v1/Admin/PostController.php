@@ -28,7 +28,7 @@ class PostController extends ApiController
      * @param \App\Http\Requests\PostRequest $request;
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $post = Post::create($request->validated());
         return $this->successResponse(PostResource::make($post), Response::HTTP_CREATED);
