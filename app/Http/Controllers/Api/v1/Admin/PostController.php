@@ -49,13 +49,13 @@ class PostController extends ApiController
      * Update the specified resource in storage.
      *
      * @param PostRequest $request;
-     * @param  \App\Models\Post $post;
+     * @param  Post $post;
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(PostRequest $request, Post $post)
     {
         $attributes = $post->update($request->validated());
-        return $this->successResponse(PostResource::collection($attributes));
+        return $this->successResponse([], Response::HTTP_NO_CONTENT);
     }
 
     /**
