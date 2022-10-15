@@ -45,5 +45,7 @@ Route::group([
         Route::get('categories/{category}', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'show'])->name('categories.show');
         Route::patch('categories/{category}', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'update'])->name('categories.update');
         Route::delete('categories/{category}', [\App\Http\Controllers\Api\v1\Admin\CategoryController::class, 'destroy'])->name('categories.destroy');
+        // post routes
+
     });
 });
