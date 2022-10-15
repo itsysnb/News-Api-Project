@@ -35,7 +35,7 @@ class PostRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'category' => ['required', 'integer', 'exists:categories,id']
+            'category_id' => ['required', 'integer', 'exists:categories,id']
         ];
     }
 
@@ -45,7 +45,7 @@ class PostRequest extends FormRequest
             'title' => ['sometimes', 'required', 'string', 'max:255'],
             'description' => ['sometimes', 'required'],
             'user_id' => ['sometimes', 'required', 'integer', 'exists:users,id'],
-            'category' => ['sometimes', 'required', 'integer', 'exists:categories,id']
+            'category_id' => ['sometimes', 'required', 'integer', 'exists:categories,id']
         ];
     }
 }
