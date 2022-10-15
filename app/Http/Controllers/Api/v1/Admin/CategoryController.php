@@ -31,8 +31,8 @@ class CategoryController extends ApiController
 
     public function update(CategoryRequest $request, Category $category)
     {
-        $attribute = $category->update($request->validated());
-        return $this->successResponse(CategoryResource::collection($attribute));
+        $category->update($request->validated());
+        return $this->successResponse(['this category updated success.']);
     }
 
     public function destroy(Category $category)
