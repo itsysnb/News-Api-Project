@@ -51,5 +51,7 @@ Route::group([
         Route::get('posts/{post}', [\App\Http\Controllers\Api\v1\Admin\PostController::class , 'show'])->name('posts.show');
         Route::patch('posts/{post}', [\App\Http\Controllers\Api\v1\Admin\PostController::class, 'update'])->name('posts.update');
         Route::delete('posts/{post}', [\App\Http\Controllers\Api\v1\Admin\PostController::class, 'destroy'])->name('posts.destroy');
+        // comment routes
+
     });
 });
