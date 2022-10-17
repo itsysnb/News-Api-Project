@@ -25,7 +25,7 @@ class CommentRequest extends FormRequest
     {
         return [
             'subject' => ['required', 'string', 'max:255'],
-            'description' => ['required'],
+            'body' => ['required'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'post_id' => ['required', 'integer', 'exists:posts,id']
         ];
