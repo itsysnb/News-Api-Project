@@ -53,6 +53,6 @@ Route::group([
         Route::delete('posts/{post}', [\App\Http\Controllers\Api\v1\Admin\PostController::class, 'destroy'])->name('posts.destroy');
         // comment routes
         Route::post('posts/{post}/comment', [\App\Http\Controllers\Api\v1\Admin\CommentController::class, 'store'])->name('comments.store');
-
+        Route::get('posts/{post}/comment', [\App\Http\Controllers\Api\v1\Admin\CommentController::class, 'show'])->name('comment.show');
     });
 });
