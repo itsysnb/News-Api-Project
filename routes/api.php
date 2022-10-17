@@ -52,6 +52,7 @@ Route::group([
         Route::patch('posts/{post}', [\App\Http\Controllers\Api\v1\Admin\PostController::class, 'update'])->name('posts.update');
         Route::delete('posts/{post}', [\App\Http\Controllers\Api\v1\Admin\PostController::class, 'destroy'])->name('posts.destroy');
         // comment routes
+        Route::post('posts/{post}/comment', [\App\Http\Controllers\Api\v1\Admin\CommentController::class, 'store'])->name('comments.store');
 
     });
 });
