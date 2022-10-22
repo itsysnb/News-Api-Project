@@ -44,7 +44,7 @@ class PostController extends ApiController
     public function show(Post $post)
     {
         $this->authorize(PostPolicy::SHOW, $post);
-        return $this->successResponse(PostResource::collection($post));
+        return $this->successResponse(PostResource::make($post));
     }
     /**
      * Update the specified resource in storage.
