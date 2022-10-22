@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\PostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use App\Policies\PostPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -42,8 +43,8 @@ class PostController extends ApiController
      */
     public function show(Post $post)
     {
-        $attributes = $post->where('id', $post->id)->get();
-        return $this->successResponse(PostResource::collection($attributes));
+        $this->authorize(PostPolicy::SHOW, $post);
+        return $this->successResponse(PostResource::collection($post));
     }
     /**
      * Update the specified resource in storage.
@@ -54,6 +55,7 @@ class PostController extends ApiController
      */
     public function update(PostRequest $request, Post $post)
     {
+        $this->authorize(PostPolicy::UPDATE, $post);
         $attributes = $post->update($request->validated());
         return $this->successResponse([], Response::HTTP_NO_CONTENT);
     }
@@ -66,6 +68,7 @@ class PostController extends ApiController
      */
     public function destroy(Post $post)
     {
+        $this->authorize(PostPolicy::DELETE, $post);
         $post->delete();
         return $this->successResponse([], Response::HTTP_NO_CONTENT);
     }
